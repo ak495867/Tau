@@ -1,0 +1,31 @@
+[package]
+name = "tau-cpu"
+version = "0.1.0"
+edition = "2021"
+description = "Safe CPU-efficiency monitoring and workload prioritization"
+license = "MIT"
+repository = "https://github.com/ak495867/Tau"
+readme = "README.md"
+keywords = ["cpu", "performance", "monitoring", "resource-management"]
+categories = ["command-line-utilities", "system-monitoring"]
+
+[[bin]]
+name = "tau"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "=4.4.18", features = ["derive"] }
+ctrlc = "3.4"
+libc = "0.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sysinfo = "0.29"
+
+[dev-dependencies]
+assert_cmd = "=2.0.16"
+predicates = "3.1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
